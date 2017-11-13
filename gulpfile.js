@@ -20,13 +20,6 @@ gulp.task('sass', function () {
         .pipe(browserSync.stream());
 });
 
-// Move JS Files to src/js  
-gulp.task('js', function () {
-    return gulp.src('node_modules/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest('./app/src/js'))
-        .pipe(browserSync.stream());
-});
-
 // Watch Sass & Server
 gulp.task('serve', ['sass'], function () {
     browserSync.init({
@@ -36,19 +29,7 @@ gulp.task('serve', ['sass'], function () {
     gulp.watch("./app/index.html").on('change', browserSync.reload);
 });
 
-// Move Fonts Folder to src
-gulp.task('fonts', function () {
-    return gulp.src('node_modules/font-awesome/fonts/*')
-        .pipe(gulp.dest("./app/src/fonts"));
-});
-
-// Move Font Awesome CSS to src/css
-gulp.task('fa', function () {
-    return gulp.src('node_modules/font-awesome/css/font-awesome.min.css')
-        .pipe(gulp.dest("./app/src/css"));
-});
-
-gulp.task('default', ['js', 'serve', 'fa', 'fonts']);
+gulp.task('default', ['serve']);
 
 
 gulp.task('previewDocs', function () {
